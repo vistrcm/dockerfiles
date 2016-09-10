@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:14.04
 MAINTAINER Stanislav Vitko <stanislav.vitko@gmail.com>
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
