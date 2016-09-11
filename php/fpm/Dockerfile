@@ -1,6 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER Stanislav Vitko <stanislav.vitko@gmail.com>
 
+# install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
         php5-fpm \
         php5-gd \
@@ -12,6 +13,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php-gettext \
         php-pear \
     && rm -rf /var/lib/apt/lists/*
+
+# create additional directories
+RUN mkdir -p /var/log/php-fpm/
+
+COPY php/php-fpm.conf /etc/php5/fpm/php-fpm.conf
+COPY php/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
+
 WORKDIR /var/www/html
 EXPOSE 9000
 CMD ["php5-fpm"]
