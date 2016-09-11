@@ -17,8 +17,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # create additional directories
 RUN mkdir -p /var/log/php-fpm/
 
-COPY php/php-fpm.conf /etc/php5/fpm/php-fpm.conf
-COPY php/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
+COPY php5-fpm/php-fpm.conf /etc/php5/fpm/php-fpm.conf
+COPY php5-fpm/php.ini /etc/php5/fpm/php.ini
+COPY php5-fpm/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
 
 WORKDIR /var/www/html
 EXPOSE 9000
