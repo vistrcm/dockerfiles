@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php-gettext \
         php-pear \
         sendmail \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && php5enmod mcrypt
 
 # create additional directories
 RUN mkdir -p /var/log/php-fpm/
