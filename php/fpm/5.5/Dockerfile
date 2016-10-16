@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php5-xcache \
         php-gettext \
         php-pear \
-        sendmail \
+        ssmtp \
     && rm -rf /var/lib/apt/lists/* \
     && php5enmod mcrypt
 
