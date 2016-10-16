@@ -13,9 +13,10 @@ RUN apt-get update \
         supervisor \
         # to log in ususal file /var/log/maillog
         rsyslog \
-    && rm -rf /var/lib/apt/lists/* \
-    # workaround on postfix smtpd problem
-    && ln -snf /etc/services /var/spool/postfix/etc/services
+    && rm -rf /var/lib/apt/lists/*
+# workaround on postfix smtpd problem
+RUN mkdir -p /var/spool/postfix/etc/ \
+    && cp /etc/services /var/spool/postfix/etc/services
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
