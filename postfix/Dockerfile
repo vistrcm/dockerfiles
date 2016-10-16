@@ -13,7 +13,12 @@ RUN apt-get update \
         supervisor \
         # to log in ususal file /var/log/maillog
         rsyslog \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && postconf -e mydestination="localhost.localdomain, localhost" \
+    && postconf -e smtpd_banner='$myhostname ESMTP $mail_name' \
+    && postconf -# myhostname \
+    && postconf -e inet_protocols=ipv4
+
 # workaround on postfix smtpd problem
 RUN mkdir -p /var/spool/postfix/etc/ \
     && cp /etc/services /var/spool/postfix/etc/services
