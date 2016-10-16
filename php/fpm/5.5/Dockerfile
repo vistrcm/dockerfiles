@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php-pear \
         ssmtp \
     && rm -rf /var/lib/apt/lists/* \
-    && php5enmod mcrypt
+    && php5enmod mcrypt \
+    # allow FromLineOverride=YES for ssmtp
+    && sed -i.bak s/^#FromLineOverride=YES$/FromLineOverride=YES/g /etc/ssmtp/ssmtp.conf
 
 # create additional directories
 RUN mkdir -p /var/log/php-fpm/
