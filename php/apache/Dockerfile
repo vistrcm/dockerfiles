@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php-gettext \
         php-pear \
         php5-curl \
+        php5-imagick \
         ssmtp \
     && rm -rf /var/lib/apt/lists/* \
     # enable php modules
