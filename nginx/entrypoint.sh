@@ -10,4 +10,4 @@ if [ ! -f /etc/nginx/ssl/dhparams.pem ]; then
 fi
 
 # start nginx
-nginx -g daemon off
+nginx -g "daemon off;"
