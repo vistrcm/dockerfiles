@@ -16,10 +16,11 @@ RUN wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP
     && gunzip /etc/nginx/geoip/GeoLiteCity.dat.gz
 
 COPY fastcgi_params /etc/nginx/fastcgi_params
+COPY entrypoint.sh /entrypoint.sh
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
 EXPOSE 80 443
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/entrypoint.sh"]
