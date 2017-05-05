@@ -10,4 +10,5 @@ if [ ! -f /etc/nginx/ssl/dhparams.pem ]; then
 fi
 
 # start nginx
+echo "starting nginx"
 nginx -g "daemon off;"
