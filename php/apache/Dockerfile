@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php-pear \
         php5-curl \
         php5-imagick \
-        php5-memcached \
+        php5-memcache \
         ssmtp \
     && rm -rf /var/lib/apt/lists/* \
     # enable php modules
