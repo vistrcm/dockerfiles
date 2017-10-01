@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php5-intl \
         php5-mysql \
         php5-xcache \
+        php5-memcached \
         php-gettext \
         php-pear \
         sendmail \
