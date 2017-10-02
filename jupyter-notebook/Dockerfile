@@ -1,30 +1,26 @@
-# ipython notebook
+# jupyter notebook
 #
-# VERSION       1
+# VERSION       2
 
 # use the ubuntu base image
 FROM ubuntu
-MAINTAINER Stanislav Vitko, stanislav.vitko@gmail.com
+MAINTAINER Stanislav Vitko, stas@vitko.me
 
 # install required system packages
-RUN apt-get update -y
-RUN apt-get install -y python python-setuptools gcc g++ python-dev libzmq-dev libxft-dev
+RUN useradd -m jupyter \
+	&& mkdir /notebooks/ \
+	&& chown jupyter /notebooks \
+	&& apt-get update -y \
+	&& apt-get install -y \
+		python3 \
+		python3-pip \
+	&& rm -rf /var/lib/apt/lists/*
 
-# Install pip
-RUN easy_install pip
-
-# install python packages
-RUN pip install numpy matplotlib pandas ipython[all]
-
-#run as non-privileged user and chown dir
-RUN useradd -m ipython
-RUN mkdir -p /notebooks
-RUN chown ipython /notebooks
-USER ipython
-
-# directory for notebooks
-VOLUME /notebooks
 WORKDIR /notebooks/
+COPY requirements.txt /notebooks/requirements.txt
+RUN python3 -m pip install --upgrade pip \
+	&& python3 -m pip install -r /notebooks/requirements.txt
 
 EXPOSE 8888
-CMD ipython notebook --no-browser --ip=0.0.0.0
+USER jupyter
+CMD jupyter notebook --no-browser --ip=0.0.0.0
