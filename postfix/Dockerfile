@@ -17,7 +17,8 @@ RUN apt-get update \
     && postconf -e mydestination="localhost.localdomain, localhost" \
     && postconf -e smtpd_banner='$myhostname ESMTP $mail_name' \
     && postconf -# myhostname \
-    && postconf -e inet_protocols=ipv4
+    && postconf -e inet_protocols=ipv4 \
+    && postconf -e myorigin='</etc/mailname'  # strange fix
 
 # workaround on postfix smtpd problem
 RUN mkdir -p /var/spool/postfix/etc/ \
