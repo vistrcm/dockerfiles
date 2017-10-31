@@ -13,6 +13,7 @@ RUN apt-get update \
         supervisor \
         # to log in ususal file /var/log/maillog
         rsyslog \
+        libsasl2-modules \
     && rm -rf /var/lib/apt/lists/* \
     && postconf -e mydestination="localhost.localdomain, localhost" \
     && postconf -e smtpd_banner='$myhostname ESMTP $mail_name' \
