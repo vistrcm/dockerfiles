@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php7.0-intl \
         php7.0-mysql \
         php7.0-curl \
+        php7.0-mbstring \
         php-memcache \
         php-gettext \
         php-pear \
