@@ -1,6 +1,8 @@
 FROM ubuntu:16.04
 MAINTAINER Stanislav Vitko <stas@vitko.me>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
         apache2 \
         libapache2-mod-php7.0 \
