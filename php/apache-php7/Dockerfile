@@ -24,9 +24,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # allow FromLineOverride=YES for ssmtp
     && sed -i.bak s/^#FromLineOverride=YES$/FromLineOverride=YES/g /etc/ssmtp/ssmtp.conf
 
-#COPY php.ini /etc/php5/apache2/php.ini
-#COPY php.ini /etc/php5/cli/php.ini
-#COPY php.ini /etc/php5/fpm/php.ini
+COPY php.ini /etc/php5/apache2/php.ini
+COPY php.ini /etc/php5/cli/php.ini
 
 WORKDIR /var/www/html
 EXPOSE 80
