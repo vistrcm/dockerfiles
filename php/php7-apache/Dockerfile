@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php-pear \
         php-imagick \
         ssmtp \
-        curl \
+        ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
     # enable apache modules
     && a2enmod rewrite \
