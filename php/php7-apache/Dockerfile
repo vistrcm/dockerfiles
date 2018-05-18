@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # enable apache modules
     && a2enmod rewrite \
     && a2enmod headers \
+    && a2enmod remoteip \
     # allow FromLineOverride=YES for ssmtp
     && sed -i.bak s/^#FromLineOverride=YES$/FromLineOverride=YES/g /etc/ssmtp/ssmtp.conf
 
