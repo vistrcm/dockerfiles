@@ -5,7 +5,6 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends --no-install-suggests \
         wget \
         ca-certificates \
-        nginx-full \
     && mkdir -p /etc/nginx/geoip \
     && wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz -O /etc/nginx/geoip/GeoIP.dat.gz \
     && wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz -O /etc/nginx/geoip/GeoLiteCity.dat.gz \
