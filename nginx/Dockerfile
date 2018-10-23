@@ -1,4 +1,4 @@
-FROM nginx:1.13
+FROM nginx:1.15
 
 # add geoip databases. Not enabled by default, just downloaded.
 RUN apt-get update \
