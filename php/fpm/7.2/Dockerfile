@@ -16,16 +16,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         php7.2-curl \
         ssmtp \
     && rm -rf /var/lib/apt/lists/* \
-    && php5enmod mcrypt \
     # allow FromLineOverride=YES for ssmtp
     && sed -i.bak s/^#FromLineOverride=YES$/FromLineOverride=YES/g /etc/ssmtp/ssmtp.conf
 
 # create additional directories
 RUN mkdir -p /var/log/php-fpm/
 
-COPY php5-fpm/php-fpm.conf /etc/php5/fpm/php-fpm.conf
-COPY php5-fpm/php.ini /etc/php5/fpm/php.ini
-COPY php5-fpm/pool.d/www.conf /etc/php5/fpm/pool.d/www.conf
+COPY php/7.2/fpm/php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
+COPY php/7.2/fpm/php.ini /etc/php/7.2/fpm/php.ini
+COPY php/7.2/fpm/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.conf
 
 WORKDIR /var/www/html
 EXPOSE 9000
