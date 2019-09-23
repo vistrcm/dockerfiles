@@ -1,5 +1,4 @@
 FROM ubuntu:18.04
-MAINTAINER Stanislav Vitko <stanislav.vitko@gmail.com>
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -17,10 +16,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         ssmtp \
     && rm -rf /var/lib/apt/lists/* \
     # allow FromLineOverride=YES for ssmtp
-    && sed -i.bak s/^#FromLineOverride=YES$/FromLineOverride=YES/g /etc/ssmtp/ssmtp.conf
-
-# create additional directories
-RUN mkdir -p /var/log/php-fpm/
+    && sed -i.bak s/^#FromLineOverride=YES$/FromLineOverride=YES/g /etc/ssmtp/ssmtp.conf \
+    && mkdir /var/log/php-fpm \
+    && chown www-data /var/log/php-fpm
 
 COPY php/7.2/fpm/php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
 COPY php/7.2/fpm/php.ini /etc/php/7.2/fpm/php.ini
@@ -28,4 +26,4 @@ COPY php/7.2/fpm/pool.d/www.conf /etc/php/7.2/fpm/pool.d/www.conf
 
 WORKDIR /var/www/html
 EXPOSE 9000
-CMD ["php5-fpm"]
+CMD ["php-fpm7.2"]
