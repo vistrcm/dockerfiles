@@ -36,7 +36,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/tor-alpine
 
       - name: Build and push Docker image
         id: build
@@ -49,4 +49,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Add summary
-        run: echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.id.outputs.imageid }}" >> $GITHUB_STEP_SUMMARY
+        run: echo "${{ env.REGISTRY }}/tor-alpine:${{ steps.id.outputs.imageid }}" >> $GITHUB_STEP_SUMMARY
