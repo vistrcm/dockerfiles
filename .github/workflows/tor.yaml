@@ -37,6 +37,11 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            # minimal (short sha)
+            type=sha
+            # full length sha
+            type=sha,format=long
 
       - name: Build and push Docker image
         id: build
@@ -49,4 +54,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Add summary
-        run: echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.build.outputs.imageid }}" >> $GITHUB_STEP_SUMMARY
+        run: echo "${{ steps.meta.outputs.tags }}" >> $GITHUB_STEP_SUMMARY
