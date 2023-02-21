@@ -39,6 +39,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker image
+        working-directory: ./tor-alpine/
         uses: docker/build-push-action@v4
         with:
           context: .
