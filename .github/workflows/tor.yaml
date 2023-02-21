@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: tor-alpine
+  IMAGE_NAME: tor
 
 jobs:
   build-and-push-image:
