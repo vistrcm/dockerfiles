@@ -51,6 +51,11 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          labels: |
+            org.opencontainers.image.title=vistrcm/dockerfiles-dante
+            org.opencontainers.image.vendor=Stas Vitko
+            org.opencontainers.image.description=dante socks server
+            org.opencontainers.image.source=https://github.com/vistrcm/dockerfiles/tree/master/dante
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
