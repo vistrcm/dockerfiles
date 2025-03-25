@@ -1,5 +1,7 @@
 Different Dockerfiles.
 ----------------------
 
-ipython-notebook - ipython notebook with numpy,matplotlib and pandas
+bitcoind - bitcoin daemon
+dante - dante socks proxy
 kubectl - kubectl in docker
+tor-alpine - tor
